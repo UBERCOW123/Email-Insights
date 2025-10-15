@@ -1,0 +1,34 @@
+{
+  "manifest_version": 3,
+  "name": "Outlook Insights Dashboard",
+  "version": "1.1.0",
+  "description": "Analyzes your Outlook inbox to track email statistics, response times, and communication patterns. Perfect for identifying who's ignoring your emails!",
+  "permissions": [
+    "storage",
+    "identity"
+  ],
+  "host_permissions": [
+    "https://graph.microsoft.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup.html"
+  },
+  "options_page": "options.html",
+  "oauth2": {
+    "client_id": "6dd93ff2-c48b-4c69-8555-605b5ab500ee",
+    "scopes": [
+      "https://graph.microsoft.com/Mail.ReadBasic",
+      "https://graph.microsoft.com/User.Read"
+    ]
+  },
+  "browser_specific_settings": {
+    "edge": {
+      "oauth2": {
+        "client_id": "6dd93ff2-c48b-4c69-8555-605b5ab500ee"
+      }
+    }
+  }
+}

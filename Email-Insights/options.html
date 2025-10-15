@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Outlook Insights - Settings</title>
+    <link rel="stylesheet" href="options.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Settings</h1>
+            <p class="subtitle">Customize how your emails are analyzed</p>
+        </div>
+
+        <div class="option-group">
+            <div class="option-header">
+                <h2>Analysis Scope</h2>
+                <p>Define the parameters of the email analysis.</p>
+            </div>
+            <div class="option">
+                <div class="option-content">
+                    <label for="analysisPeriod" class="option-label">Analysis Period (Free)</label>
+                    <p class="option-description">Select the time range for email analysis. Longer periods may take more time to process.</p>
+                </div>
+                <select id="analysisPeriod" name="analysisPeriod" class="simple-select">
+                    <option value="30">Last 30 Days</option>
+                    <option value="90">Last 90 Days</option>
+                    <option value="180" disabled>Last 6 Months (Premium)</option>
+                    <option value="365" disabled>Last 1 Year (Premium)</option>
+                    <option value="-1" disabled>All-Time (Premium)</option>
+                </select>
+            </div>
+            
+            <div class="option premium-option">
+                <div class="option-content">
+                    <label class="option-label">Unlock Premium Analysis</label>
+                    <p class="option-description">Analyze your entire email history with our premium tiers.</p>
+                </div>
+                <div class="premium-buttons">
+                    <a href="https://buy.stripe.com/example_6m_1y" target="_blank" class="btn-premium">Unlock 6mo & 1yr (£2)</a>
+                    <a href="https://buy.stripe.com/example_all_time" target="_blank" class="btn-premium">Unlock All-Time (£5)</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="option-group">
+            <div class="option-header">
+                <h2>Filtering Rules</h2>
+                <p>Choose which emails to include or exclude from analysis.</p>
+            </div>
+            <div class="option">
+                <label class="toggle">
+                    <input type="checkbox" id="filterCalendarInvites" name="filterCalendarInvites">
+                    <span class="slider"></span>
+                </label>
+                <div class="option-content">
+                    <label for="filterCalendarInvites" class="option-label">Exclude calendar invites</label>
+                    <p class="option-description">Removes meeting invitations, acceptances, and declines.</p>
+                </div>
+            </div>
+            <div class="option">
+                <label class="toggle">
+                    <input type="checkbox" id="filterOutOfOffice" name="filterOutOfOffice">
+                    <span class="slider"></span>
+                </label>
+                <div class="option-content">
+                    <label for="filterOutOfOffice" class="option-label">Exclude auto-replies</label>
+                    <p class="option-description">"Out of Office" and other automatic replies will not count as a response.</p>
+                </div>
+            </div>
+            <div class="option">
+                <label class="toggle">
+                    <input type="checkbox" id="filterGroupEmails" name="filterGroupEmails">
+                    <span class="slider"></span>
+                </label>
+                <div class="option-content">
+                    <label for="filterGroupEmails" class="option-label">Analyze individuals in group emails</label>
+                    <p class="option-description">Track stats for each person in CC/To fields individually.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="option-group">
+            <div class="option-header">
+                <h2>Response Time Calculation</h2>
+                <p>Configure how response times are measured.</p>
+            </div>
+            <div class="option">
+                <label class="toggle">
+                    <input type="checkbox" id="useBusinessHours" name="useBusinessHours">
+                    <span class="slider"></span>
+                </label>
+                <div class="option-content">
+                    <label for="useBusinessHours" class="option-label">Calculate using business hours only</label>
+                    <p class="option-description">Count only Monday-Friday, 9 AM - 5 PM.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="option-group">
+            <div class="option-header">
+                <h2>Highlighting Rules</h2>
+                <p>Set criteria for highlighting poor responders.</p>
+            </div>
+            <div class="option">
+                <div class="option-content">
+                    <label for="shameThreshold" class="option-label">Reply Rate Threshold</label>
+                    <div class="slider-container">
+                        <input type="range" id="shameThreshold" name="shameThreshold" min="0" max="100" value="30" step="5">
+                        <span id="shameThresholdValue">30%</span>
+                    </div>
+                    <p class="option-description">Highlight contacts who reply to fewer than this percentage of your emails.</p>
+                </div>
+            </div>
+            <div class="option">
+                <div class="option-content">
+                    <label for="ignoreThreshold" class="option-label">Ignored Emails Threshold</label>
+                    <div class="slider-container">
+                        <input type="range" id="ignoreThreshold" name="ignoreThreshold" min="1" max="50" value="10" step="1">
+                        <span id="ignoreThresholdValue">10</span>
+                    </div>
+                    <p class="option-description">Highlight contacts who have ignored more than this number of your emails.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="option-group danger">
+            <div class="option-header">
+                <h2>Data Management</h2>
+                <p>Clear stored email statistics.</p>
+            </div>
+            <div class="option">
+                <button id="clearData" class="btn-danger">Clear All Stored Data</button>
+                <p class="option-description">Permanently erase all locally stored statistics.</p>
+            </div>
+        </div>
+
+        <div class="actions">
+            <button id="save" class="btn-primary">Save Settings</button>
+            <button id="cancel" class="btn-secondary">Cancel</button>
+        </div>
+
+        <div id="status" class="hidden"></div>
+
+        <div class="footer-info">
+            <h3>Data Privacy</h3>
+            <p>All email analysis is performed locally on your device. No data is sent to external servers. Your email statistics are stored only in your browser's local storage.</p>
+        </div>
+    </div>
+    <script src="options.js"></script>
+</body>
+</html>
