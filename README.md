@@ -52,8 +52,4 @@ Minimal Permissions: The extension requests Mail.ReadBasic permission, which onl
 
 Secure Authentication: Authentication is handled via the standard Microsoft Identity Platform (OAuth 2.0). The extension never has access to your password.
 
-Contributing
-Contributions are welcome. Please fork the repository, make your changes, and submit a pull request.
-
-License
-This project is licensed under the MIT License.
+License: dont steal
